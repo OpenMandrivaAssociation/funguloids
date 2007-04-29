@@ -35,6 +35,7 @@ autoreconf
 rm -rf %{buildroot}
 %makeinstall_std
 install %{name}/bin/*.mpk %{buildroot}%{_gamesdatadir}/%{name}
+install bin/icon/*.png %{buildroot}%{_gamesdatadir}/%{name}/music
 
 %clean
 rm -rf %{buildroot}
