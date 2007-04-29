@@ -17,7 +17,7 @@ Url: http://funguloids.sourceforge.net/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: automake1.8
 BuildRequires: lua5.1-devel ogre-devel ois-devel
-BuildRequires: freealut-devel openal-devel
+BuildRequires: freealut-devel oggvorbis-devel openal-devel
 
 %description
 Never before has collecting mushrooms been this mildly
