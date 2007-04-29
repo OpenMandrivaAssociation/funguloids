@@ -10,6 +10,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://www.newbyteorder.net/%{distname}.tar.bz2
+Source1: funguloids-linux-1.05f.tar.bz2
 License: Zlib/libpng
 Group: Games/Arcade
 Url: http://funguloids.sourceforge.net/
@@ -22,7 +23,7 @@ entertaining. At least not in outer space. It's more of a lifestyle
 than a game, really. Now with graphics and sound, too!
 
 %prep
-%setup -q -n %{distname}
+%setup -q -n %{distname} -a 1
 perl -pi -e 's/-llua5\.1/-llua/' configure*
 autoreconf
 %configure2_5x --prefix=%{_datadir} --bindir=%{_gamesbindir}
@@ -33,6 +34,7 @@ autoreconf
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+install %{name}/bin/*.mpk %{buildroot}%{_gamesdatadir}/%{name}
 
 %clean
 rm -rf %{buildroot}
