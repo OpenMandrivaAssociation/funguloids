@@ -3,7 +3,7 @@
 # pre release from http://www.ogre3d.org/phpBB2/viewtopic.php?t=29147&postdays=0&postorder=asc&start=75 (with autotools and OpenAL support)
 %define pre 0
 %define distname %{name}-%{version}-%{pre}
-%define release %mkrel 1
+%define release %mkrel 0.pre%{pre}.1
 
 Summary: Those Funny Funguloids! arcade game
 Name: %{name}
