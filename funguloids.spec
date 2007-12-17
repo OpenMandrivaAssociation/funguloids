@@ -17,7 +17,6 @@ Patch1:	 funguloids-1.06-0-root.patch
 License: Zlib/libpng
 Group: Games/Arcade
 Url: http://funguloids.sourceforge.net/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: automake1.8
 BuildRequires: lua5.1-devel ogre-devel ois-devel
 BuildRequires: freealut-devel mad-devel oggvorbis-devel openal-devel
