@@ -3,7 +3,7 @@
 # pre release from http://www.ogre3d.org/phpBB2/viewtopic.php?t=29147&postdays=0&postorder=asc&start=75 (with autotools and OpenAL support)
 #%define pre 0
 %define distname %{name}-linux-src-1.06-4
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Those Funny Funguloids! arcade game
 Name: %{name}
@@ -21,6 +21,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: automake1.8
 BuildRequires: lua5.1-devel ogre-devel ois-devel
 BuildRequires: freealut-devel mad-devel oggvorbis-devel openal-devel
+Requires: ogre
 
 %description
 Never before has collecting mushrooms been this mildly
