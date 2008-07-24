@@ -3,7 +3,7 @@
 # pre release from http://www.ogre3d.org/phpBB2/viewtopic.php?t=29147&postdays=0&postorder=asc&start=75 (with autotools and OpenAL support)
 #%define pre 0
 %define distname %{name}-linux-src-1.06-4
-%define release %mkrel 2
+%define release %mkrel 4
 
 Summary: Those Funny Funguloids! arcade game
 Name: %{name}
