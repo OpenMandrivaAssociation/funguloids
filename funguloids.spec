@@ -13,6 +13,7 @@ Source0: http://www.newbyteorder.net/%{distname}.tar.bz2
 Source1: funguloids-linux-1.06-4.tar.bz2
 Patch0:	 funguloids-1.06-0-noCg.patch
 Patch1:	 funguloids-1.06-4-gcc43.patch
+Patch2:	 funguloids-size_chunks_reverse.patch
 License: Zlib/libpng
 Group: Games/Arcade
 Url: http://funguloids.sourceforge.net/
@@ -31,6 +32,7 @@ than a game, really. Now with graphics and sound, too!
 %setup -q -n %{name} -a 1
 %patch0 -p1 -b .noCg
 %patch1 -p0
+%patch2 -p0
 perl -pi -e 's/-llua5\.1/-llua/' configure*
 autoreconf
 %configure2_5x --bindir=%{_gamesbindir}
