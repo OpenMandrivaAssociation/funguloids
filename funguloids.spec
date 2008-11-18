@@ -3,7 +3,7 @@
 # pre release from http://www.ogre3d.org/phpBB2/viewtopic.php?t=29147&postdays=0&postorder=asc&start=75 (with autotools and OpenAL support)
 ##%define pre 0
 %define distname %{name}-linux-src-1.06-4
-%define release %mkrel 5
+%define release %mkrel 6
 
 Summary: Those Funny Funguloids! arcade game
 Name: %{name}
@@ -46,6 +46,19 @@ rm -rf %{buildroot}
 install %{name}/bin/*.mpk %{buildroot}%{_gamesdatadir}/%{name}
 install bin/icon/*.png %{buildroot}%{_gamesdatadir}/%{name}/music
 
+install -m 755 -d %{buildroot}%{_datadir}/applications/
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+[Desktop Entry]
+Name=Those Funny Funguloids!
+Comment=%{Summary}
+Exec=%{_gamesbindir}/%{name}
+Icon=%{name}
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;ArcadeGame;
+EOF
+
 %clean
 rm -rf %{buildroot}
 
@@ -53,5 +66,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{name}
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/docs/%{name}/*
+
