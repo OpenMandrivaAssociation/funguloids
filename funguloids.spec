@@ -3,7 +3,7 @@
 # pre release from http://www.ogre3d.org/phpBB2/viewtopic.php?t=29147&postdays=0&postorder=asc&start=75 (with autotools and OpenAL support)
 ##%define pre 0
 %define distname %{name}-linux-src-1.06-4
-%define release %mkrel 6
+%define release %mkrel 7
 
 Summary: Those Funny Funguloids! arcade game
 Name: %{name}
@@ -14,6 +14,11 @@ Source1: funguloids-linux-1.06-4.tar.bz2
 Patch0:	 funguloids-1.06-0-noCg.patch
 Patch1:	 funguloids-1.06-4-gcc43.patch
 Patch2:	 funguloids-size_chunks_reverse.patch
+# (misc) new ogre engine no longer have setnormaliseNormals 
+# and requires the archive class to return the modification date
+# of the file. I choosed to return 0 since this information is missing
+Patch3:  funguloids-1.06-fix_new_ogre.diff
+
 License: Zlib/libpng
 Group: Games/Arcade
 Url: http://funguloids.sourceforge.net/
@@ -33,6 +38,7 @@ than a game, really. Now with graphics and sound, too!
 %patch0 -p1 -b .noCg
 %patch1 -p0
 %patch2 -p0
+%patch3 -p0
 perl -pi -e 's/-llua5\.1/-llua/' configure*
 autoreconf
 %configure2_5x --bindir=%{_gamesbindir}
