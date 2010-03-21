@@ -5,34 +5,34 @@
 %define distname %{name}-linux-src-1.06-4
 %define release %mkrel 9
 
-Summary: Those Funny Funguloids! arcade game
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://www.newbyteorder.net/%{distname}.tar.bz2
-Source1: funguloids-linux-1.06-4.tar.bz2
+Summary:	Those Funny Funguloids! arcade game
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	http://www.newbyteorder.net/%{distname}.tar.bz2
+Source1:	funguloids-linux-1.06-4.tar.bz2
 # (ahmad) fix segmenation fault on selecting "start game", due to change in ogre
 # using mpak.py, from upstream author, to unpack modify the scritps and repack
 # c.f. http://www.mail-archive.com/packman@links2linux.de/msg02703.html
-Source2: mpak.py
-Patch0:	 funguloids-1.06-0-noCg.patch
-Patch1:	 funguloids-1.06-4-gcc43.patch
-Patch2:	 funguloids-size_chunks_reverse.patch
+Source2:	mpak.py
+Patch0:		funguloids-1.06-0-noCg.patch
+Patch1:		 funguloids-1.06-4-gcc43.patch
+Patch2:	 	funguloids-size_chunks_reverse.patch
 # (misc) new ogre engine no longer have setnormaliseNormals 
 # and requires the archive class to return the modification date
 # of the file. I choosed to return 0 since this information is missing
-Patch3:  funguloids-1.06-fix_new_ogre.diff
+Patch3:		funguloids-1.06-fix_new_ogre.diff
 # add upstream patch to make it work with openal, because it defaults to openal-soft
-Patch4:  funguloids-1.06.4-alc_error.patch
+Patch4:		funguloids-1.06.4-alc_error.patch
 
-License: Zlib/libpng
-Group: Games/Arcade
-Url: http://funguloids.sourceforge.net/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: automake1.8
-BuildRequires: lua5.1-devel ogre-devel ois-devel
-BuildRequires: freealut-devel mad-devel oggvorbis-devel openal-devel
-Requires: ogre
+License:	Zlib/libpng
+Group:		Games/Arcade
+Url:		http://funguloids.sourceforge.net/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	automake1.8
+BuildRequires:	lua5.1-devel ogre-devel ois-devel
+BuildRequires:	freealut-devel mad-devel oggvorbis-devel openal-devel
+Requires:	ogre
 
 %description
 Never before has collecting mushrooms been this mildly
