@@ -76,7 +76,7 @@ install -m 755 -d %{buildroot}%{_datadir}/applications/
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=Those Funny Funguloids!
-Comment=%{Summary}
+Comment=%{summary}
 Exec=%{_gamesbindir}/%{name}
 Icon=%{name}
 Terminal=false
