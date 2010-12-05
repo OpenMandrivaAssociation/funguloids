@@ -5,7 +5,7 @@
 Summary:	Those Funny Funguloids! arcade game
 Name:		funguloids
 Version:	1.06.4
-Release:	%mkrel 11
+Release:	%mkrel 12
 Source0:	http://www.newbyteorder.net/%{distname}.tar.bz2
 Source1:	funguloids-linux-1.06-4.tar.bz2
 # (ahmad) fix segmenation fault on selecting "start game", due to change in ogre
