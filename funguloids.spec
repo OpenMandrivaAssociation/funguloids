@@ -5,7 +5,7 @@
 Summary:	Those Funny Funguloids! arcade game
 Name:		funguloids
 Version:	1.06.4
-Release:	%mkrel 12
+Release:	%mkrel 13
 Source0:	http://www.newbyteorder.net/%{distname}.tar.bz2
 Source1:	funguloids-linux-1.06-4.tar.bz2
 # (ahmad) fix segmenation fault on selecting "start game", due to change in ogre
@@ -23,7 +23,7 @@ Patch3:		funguloids-1.06-fix_new_ogre.diff
 Patch4:		funguloids-1.06.4-alc_error.patch
 # fix doc location
 Patch5:		funguloids-1.06-fix-doc-location.patch
-
+Patch6:		funguloids-ogre-1.7.0.patch
 License:	Zlib/libpng
 Group:		Games/Arcade
 Url:		http://funguloids.sourceforge.net/
@@ -46,6 +46,7 @@ than a game, really. Now with graphics and sound, too!
 %patch3 -p0
 %patch4 -p0
 %patch5 -p0 -b .doc
+%patch6 -p1
 perl -pi -e 's/-llua5\.1/-llua/' configure*
 autoreconf -fi
 
