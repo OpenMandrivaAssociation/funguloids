@@ -1,0 +1,13 @@
+--- configure.ac	2007-05-28 14:41:54.000000000 +0300
++++ configure.ac.new	2010-04-02 04:01:04.886597149 +0200
+@@ -254,8 +254,8 @@
+ gameinstalldir="${prefix}/share/games/funguloids"
+ iconinstalldir="${prefix}/share/games/funguloids/icon"
+ musicinstalldir="${prefix}/share/games/funguloids/music"
+-docinstalldir="${prefix}/share/docs/funguloids"
+-docimageinstalldir="${prefix}/share/docs/funguloids/docs"
++docinstalldir="${prefix}/share/doc/funguloids"
++docimageinstalldir="${prefix}/share/doc/funguloids/docs"
+ pixmapinstalldir="${prefix}/share/pixmaps"
+ 
+ AC_SUBST(prefix)

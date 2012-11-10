@@ -1,0 +1,10 @@
+--- funguloids-1.06-0/bin/plugins.cfg.in.noCg	2007-04-24 21:30:18.000000000 +0200
++++ funguloids-1.06-0/bin/plugins.cfg.in	2007-05-01 13:31:57.000000000 +0200
+@@ -7,6 +7,6 @@
+ Plugin=RenderSystem_GL
+ Plugin=Plugin_ParticleFX
+ Plugin=Plugin_OctreeSceneManager
+-Plugin=Plugin_CgProgramManager
++#Plugin=Plugin_CgProgramManager
+ 
+ 

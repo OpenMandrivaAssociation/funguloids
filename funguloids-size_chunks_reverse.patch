@@ -1,0 +1,11 @@
+--- src/mpakogre.cpp.orig	2007-04-15 00:12:39.000000000 +0200
++++ src/mpakogre.cpp	2008-11-17 15:05:30.000000000 +0100
+@@ -219,7 +219,7 @@
+ }
+ 
+ size_t MPakDataStream::read(void *buf, size_t count) {
+-	return fread(buf, count, 1, mFileHandle);
++	return fread(buf, 1, count, mFileHandle);
+ }
+ 
+ void MPakDataStream::skip(long count) {
