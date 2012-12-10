@@ -1,0 +1,128 @@
+diff -urN funguloids-orig/include/mpakogre.h funguloids-orig-patched/include/mpakogre.h
+--- funguloids-orig/include/mpakogre.h	2007-03-12 01:53:04.000000000 +1000
++++ funguloids-orig-patched/include/mpakogre.h	2012-10-21 12:41:07.190212057 +1100
+@@ -56,6 +56,8 @@
+ 	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false);
+ 
+ 	bool exists(const String &filename);
++	time_t getModifiedTime(const String& filename);
++	FileInfoListPtr findFileInfo(const String&, bool, bool) const;
+ };
+ 
+ 
+diff -urN funguloids-orig/src/mpakogre.cpp funguloids-orig-patched/src/mpakogre.cpp
+--- funguloids-orig/src/mpakogre.cpp	2007-04-15 09:12:39.000000000 +1100
++++ funguloids-orig-patched/src/mpakogre.cpp	2012-10-21 12:42:09.141211401 +1100
+@@ -198,6 +198,17 @@
+ 	return (i != -1);
+ }
+ 
++
++time_t MPakArchive::getModifiedTime(const String& filename) {
++	// TODO: This is currently only a dummy implementation.
++	return 0;
++}
++
++FileInfoListPtr MPakArchive::findFileInfo(const String&, bool, bool) const {
++	static FileInfoListPtr filp(new FileInfoList());
++	return filp;
++}
++
+ const String &MPakArchiveFactory::getType(void) const {
+ 	static String name = "MPK";
+ 	return name;
+diff -urN funguloids-orig/src/objectsystem.cpp funguloids-orig-patched/src/objectsystem.cpp
+--- funguloids-orig/src/objectsystem.cpp	2007-02-27 04:43:56.000000000 +1000
++++ funguloids-orig-patched/src/objectsystem.cpp	2012-10-21 12:44:10.084210120 +1100
+@@ -26,7 +26,7 @@
+ #include "objectsystem.h"
+ #include "game.h"
+ 
+-template<> ObjectSystem* Singleton<ObjectSystem>::ms_Singleton = 0;
++template<> ObjectSystem* Singleton<ObjectSystem>::msSingleton = 0;
+ 
+ 
+ // ObjectSystem constructor
+@@ -135,11 +135,11 @@
+ 
+ 
+ ObjectSystem *ObjectSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ ObjectSystem &ObjectSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+diff -urN funguloids-orig/src/openalsoundsystem.cpp funguloids-orig-patched/src/openalsoundsystem.cpp
+--- funguloids-orig/src/openalsoundsystem.cpp	2007-05-23 02:11:46.000000000 +1100
++++ funguloids-orig-patched/src/openalsoundsystem.cpp	2012-10-21 12:45:43.200209134 +1100
+@@ -35,16 +35,16 @@
+ #include "playlist.h"
+ #include "mpakogre.h"
+ 
+-template<> OpenALSoundSystem* Singleton<OpenALSoundSystem>::ms_Singleton = 0;
++template<> OpenALSoundSystem* Singleton<OpenALSoundSystem>::msSingleton = 0;
+ 
+ OpenALSoundSystem* OpenALSoundSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ 
+ OpenALSoundSystem& OpenALSoundSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+ 
+diff -urN funguloids-orig/src/scriptsystem.cpp funguloids-orig-patched/src/scriptsystem.cpp
+--- funguloids-orig/src/scriptsystem.cpp	2007-05-04 21:28:10.000000000 +1100
++++ funguloids-orig-patched/src/scriptsystem.cpp	2012-10-21 12:46:51.990208405 +1100
+@@ -38,7 +38,7 @@
+ #include "mpakogre.h"
+ #include <vector>
+ 
+-template<> ScriptSystem* Singleton<ScriptSystem>::ms_Singleton = 0;
++template<> ScriptSystem* Singleton<ScriptSystem>::msSingleton = 0;
+ 
+ 
+ // Log error messages
+@@ -137,7 +137,6 @@
+ 	Asteroid *roid = new Asteroid(String(name), ScriptSystem::getSingleton().getSceneMgr(), String(mesh), String(mat), pos);
+ 	roid->setScale(scale, scale, scale);
+ 	roid->setMass(scale * 10.0f);
+-	roid->getEntity()->setNormaliseNormals(true);
+ 	return 0;
+ }
+ 
+@@ -435,6 +434,7 @@
+ ScriptSystem::ScriptSystem(SceneManager *mgr, const char *startup_file) {
+ 	assert(mgr);
+ 	mSceneMgr = mgr;
++	mgr->setNormaliseNormalsOnScale(true);
+ 	scriptLights.clear();
+ 
+ 	LogManager::getSingleton().logMessage("Using " + String(LUA_VERSION));
+@@ -564,12 +564,12 @@
+ 
+ 
+ ScriptSystem *ScriptSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ ScriptSystem &ScriptSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+ 

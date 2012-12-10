@@ -1,0 +1,23 @@
+diff -urN funguloids-orig/src/Makefile.am funguloids-orig-patched/src/Makefile.am
+--- funguloids-orig/src/Makefile.am	2007-05-28 22:13:25.000000000 +1100
++++ funguloids-orig-patched/src/Makefile.am	2012-10-21 12:53:11.178204390 +1100
+@@ -1,6 +1,6 @@
+ bininstall_PROGRAMS = funguloids
+ funguloids_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/include/SimpleIni
+-funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @LUA_LIBS@
++funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @LUA_LIBS@ -lboost_system
+ funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @LUA_CFLAGS@
+ 
+ funguloids_SOURCES = asteroid.cpp \
+diff -urN funguloids-orig/src/Makefile.in funguloids-orig-patched/src/Makefile.in
+--- funguloids-orig/src/Makefile.in	2007-05-28 22:41:59.000000000 +1100
++++ funguloids-orig-patched/src/Makefile.in	2012-10-21 12:53:08.820204416 +1100
+@@ -187,7 +187,7 @@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+ funguloids_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/include/SimpleIni
+-funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @LUA_LIBS@
++funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @LUA_LIBS@ -lboost_system
+ funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @LUA_CFLAGS@
+ funguloids_SOURCES = asteroid.cpp \
+ 	ballworm.cpp \

@@ -1,0 +1,12 @@
+diff -urN funguloids-orig/include/SimpleIni/SimpleIni.h funguloids-patched/include/SimpleIni/SimpleIni.h
+--- funguloids-orig/include/SimpleIni/SimpleIni.h	2007-01-25 06:01:06.000000000 +1000
++++ funguloids-patched/include/SimpleIni/SimpleIni.h	2012-10-21 11:37:15.950252628 +1100
+@@ -407,7 +407,7 @@
+             return *this;
+         }
+         bool ConvertToStore(const SI_CHAR * a_pszString) {
+-            size_t uLen = SizeToStore(a_pszString);
++            size_t uLen = this->SizeToStore(a_pszString);
+             if (uLen == (size_t)(-1)) {
+                 return false;
+             }
