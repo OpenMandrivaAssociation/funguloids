@@ -5,7 +5,7 @@
 Summary:	Those Funny Funguloids! arcade game
 Name:		funguloids
 Version:	1.06.4
-Release:	14
+Release:	15
 License:	Zlib/libpng
 Group:		Games/Arcade
 Url:		http://funguloids.sourceforge.net/
