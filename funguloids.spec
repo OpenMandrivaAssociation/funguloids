@@ -26,6 +26,9 @@ Patch5:		funguloids-1.06-fix-doc-location.patch
 Patch6:		funguloids-ogre-1.7.0.patch
 Patch7:		funguloids-1.06-gcc4.7.patch
 Patch8:		funguloids-1.06-linkage.patch
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	automake1.8
 BuildRequires:	lua5.1-devel ogre-devel ois-devel
 BuildRequires:	freealut-devel mad-devel oggvorbis-devel openal-devel
